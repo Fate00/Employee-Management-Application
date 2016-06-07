@@ -1,0 +1,69 @@
+<div class="container">
+	<form>
+		<label>Create New Employee</label>
+		<div class='row'>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="First Name" ng-model="firstName">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Last Name" ng-model="lastName">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<input type="date" class="form-control" ng-model="startDate" placeholder="Start date: mm/dd/yyyy">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" ng-model="officePhone" placeholder="Office phone: XXX-XXX-XXXX">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" ng-model="cellPhone" placeholder="Cell phone: XXX-XXX-XXXX">
+		</div>
+		<div class="form-group">
+			<input type="email" class="form-control" ng-model="email" placeholder="Email">
+		</div>
+		<div class="form-group">
+			<select ng-model="sex" class="form-control">
+				<option value='' selected disabled hidden>Sex</option>
+				<option>Male</option>
+				<option>Female</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<select ng-model="title" class="form-control">
+				<option value="" selected disabled hidden>Title</option>
+				<option value="Director">Director</option>
+				<option value="Manager">Manager</option>
+				<option value="Staff">Staff</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<select ng-model="manager" class="form-control">
+				<option value="" selected disabled hidden>Manager</option>
+				<option value="-1">No manager</option>				
+				<option ng-repeat="user in users" value="{{ user.id }}">{{user.firstName+' '+user.lastName+ '(' + user.title + ')'}}</option>
+			</select>
+		</div>
+		<label>Picture</label>
+	    <div flow-init="{target: '/upload', singleFile: true}" flow-file-added="addfile()">
+			<div class="thumbnail" ng-show="!$flow.files.length">
+				<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+			</div>
+			<div class="thumbnail" ng-show="$flow.files.length">
+				<img flow-img="$flow.files[0]" onload="javascript:limitPresentImage(this);"/>
+			</div>
+			<div>
+				<span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
+				<span class="btn btn-info" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
+				<span class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</span>
+			</div>
+			<div class="row text-center">
+		    	<button class="btn btn-success btn-lg" ng-click="createEmployee($flow.files[0])">Create</button>
+		    	<button class="btn btn-danger btn-lg" ng-click="cancel()">Cancel</button>
+	    	</div>
+	    </div>
+	</form>
+</div>

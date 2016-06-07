@@ -1,0 +1,49 @@
+
+<div class="container">
+	<div class='detailPage'>
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<img src="{{ imgPath }}" onload="javascript:limitDetailImage(this);"/>
+			</div>
+			<div class="col-md-8 text-center">
+				<div class="row">
+					<div class="col-md-6 text-left">
+						<p><span class="title">Name:</span>&nbsp;&nbsp;<span>{{ firstName }}&nbsp;{{ lastName }}</span></p>
+					</div>
+					<div class="col-md-6 text-left">
+						<p><span class="title">Start Date:</span>&nbsp;&nbsp;<span>{{ startDate }}</span></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 text-left">
+						<p><span class="title">Office phone:</span>&nbsp;&nbsp;<span>{{ officePhone }}</span></p>
+					</div>
+					<div class="col-md-6 text-left">
+						<p><span class="title">Cell phone:</span>&nbsp;&nbsp;<span>{{ cellPhone }}</span></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 text-left">
+						<p><span class="title">Email:</span>&nbsp;&nbsp;<span>{{ email }}</span></p>
+					</div>
+					<div class="col-md-6 text-left">
+						<p><span class="title">Sex:</span>&nbsp;&nbsp;<span>{{ sex }}</span></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 text-left">
+						<p><span class="title">Title:</span>&nbsp;&nbsp;<span>{{ title }}</span></p>
+					</div>
+					<div class="col-md-6 text-left">
+						<p><span class="title">Manager name:</span>&nbsp;&nbsp;<span>{{ managerName }}</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<a class="btn btn-info btn-lg" href="#/edit/{{ uid }}">Edit</a>
+			</div>
+		</div>
+	</div>
+</div>
