@@ -62,7 +62,7 @@ app.get('/', function(req, res) {
 	res.send('To index');
 });
 
-app.get('/getLenth', function(req, res) {
+app.get('/api/getLenth', function(req, res) {
 	console.log("Enter getLength: ")
 	employeeModel.count({}, function (err, count) {
 			if (err)
@@ -73,7 +73,7 @@ app.get('/getLenth', function(req, res) {
 		});
 });
 
-app.get('/getlist', function(req, res) {
+app.get('/api/getlist', function(req, res) {
 	employeeModel.find({}, "-_id", {lean: true}, function(err, users) {
 		if (err)
 			console.log(err);
@@ -108,7 +108,7 @@ app.get('/getlist', function(req, res) {
 	});
 });
 
-app.post('/upload/:id',multipartMiddleware, function(req, res) {
+app.post('/api/upload/:id',multipartMiddleware, function(req, res) {
 	console.log("enter upload img rest api: ");
 	// console.log("Request params: " + req.params.id);
 	var maxid = req.params.id;
@@ -131,7 +131,7 @@ app.post('/upload/:id',multipartMiddleware, function(req, res) {
     });
 });
 
-app.post('/employee', function(req, res) {
+app.post('/api/employee', function(req, res) {
 
 	console.log("Enter post new employee: ");
 
@@ -161,7 +161,7 @@ app.post('/employee', function(req, res) {
 	});
 });
 
-app.get('/getUserById/:userId', function(req, res) {
+app.get('/api/getUserById/:userId', function(req, res) {
 
 	employeeModel.find(
 		{ id : req.params.userId },
@@ -173,7 +173,7 @@ app.get('/getUserById/:userId', function(req, res) {
 	);
 });
 
-app.get('/getManagerList', function(req, res) {
+app.get('/api/getManagerList', function(req, res) {
 	employeeModel.find({}, function(err, users) {
 		if (err)
 			console.log(err);
@@ -181,7 +181,7 @@ app.get('/getManagerList', function(req, res) {
 	});
 });
 
-app.post('/editUser/:userId', function(req, res) {
+app.post('/api/editUser/:userId', function(req, res) {
 
 	employeeModel.findOneAndUpdate(
 		{
@@ -208,7 +208,7 @@ app.post('/editUser/:userId', function(req, res) {
 	);
 });
 
-app.delete('/deleteUser/:userId', function(req, res) {
+app.delete('/api/deleteUser/:userId', function(req, res) {
 	employeeModel.remove(
 		{
 			id : req.params.userId
@@ -221,7 +221,7 @@ app.delete('/deleteUser/:userId', function(req, res) {
 	);
 });
 
-app.get('/getDetailReport/:userId', function(req, res) {
+app.get('/api/getDetailReport/:userId', function(req, res) {
 	employeeModel.find(
 		{
 			managerid : req.params.userId
@@ -265,7 +265,7 @@ app.get('/getDetailReport/:userId', function(req, res) {
 	);
 });
 
-app.get('/getManager/:userId', function(req, res) {
+app.get('/api/getManager/:userId', function(req, res) {
 	employeeModel.find(
 		{
 			id : req.params.userId
@@ -309,7 +309,7 @@ app.get('/getManager/:userId', function(req, res) {
 	);
 });
 
-app.get('/dirGet/:str', function(req, res) {
+app.get('/api/dirGet/:str', function(req, res) {
 	// console.log('Request come: ');
 	employeeModel.find(
 		{

@@ -37,7 +37,7 @@ app.factory('listService', function($http) {
 			
 			$http({
 				method: 'GET',
-				url: '/getlist'					
+				url: '/api/getlist'					
 			}).then(function(res) {
 				console.log("coming from expressjs ", res);
 				var users = res.data;
@@ -72,7 +72,7 @@ app.factory('listService', function($http) {
 
 			$http({
 				method: 'POST',
-				url: '/upload/' + maxid,
+				url: '/api/upload/' + maxid,
 				data: fd,
 				headers: {
 		            'Content-Type': undefined,
@@ -93,7 +93,7 @@ app.factory('listService', function($http) {
 
 			$http({
 				method: 'POST',
-				url: '/upload/' + $scope.editId,
+				url: '/api/upload/' + $scope.editId,
 				data: fd,
 				headers: {
 		            'Content-Type': undefined,
@@ -128,7 +128,7 @@ app.factory('listService', function($http) {
 					};
 
 			$http
-			.post('/employee', newEmpolyee)
+			.post('/api/employee', newEmpolyee)
 			.success(function(response) {
 				console.log("coming from expressjs ", response);
             });
@@ -137,7 +137,7 @@ app.factory('listService', function($http) {
 		getUserById: function(userId, $scope, callback) {
 			$http({
 				method: 'GET',
-				url: '/getUserById/' + userId,										
+				url: '/api/getUserById/' + userId,										
 			}).then(function(res) {
 				// alert(res.data);
 				var tmp = res.data;
@@ -160,7 +160,7 @@ app.factory('listService', function($http) {
 
 			$http({
 				method: 'GET',
-				url: '/getManagerList'
+				url: '/api/getManagerList'
 			}).then(function(res) {
 				var tmp = res.data;
 				for (var i = 0; i < tmp.length; i++) {
@@ -190,7 +190,7 @@ app.factory('listService', function($http) {
 			$http({
 				method: 'POST',
 				data: employee,
-				url: '/editUser/' + $scope.editId
+				url: '/api/editUser/' + $scope.editId
 			}).then(function(res) {
 				console.log(res.data);
 				callback();
@@ -200,7 +200,7 @@ app.factory('listService', function($http) {
 		getManagerById: function(managerid, callback) {
 			$http({
 				method: 'GET',
-				url: '/getUserById/' + managerid
+				url: '/api/getUserById/' + managerid
 			}).then(function(res) {
 				callback(res.data);
 			});
@@ -209,7 +209,7 @@ app.factory('listService', function($http) {
 		getNumOfReportById: function(userId, callback) {
 			$http({
 				method: 'GET',
-				url: '/getNumOfReportById/' + userId
+				url: '/api/getNumOfReportById/' + userId
 			}).then(function(res) {
 				callback(res.data);
 			});
@@ -218,7 +218,7 @@ app.factory('listService', function($http) {
 		deleteUser: function(id, callback) {
 			$http({
 				method: 'DELETE',
-				url: '/deleteUser/' + id
+				url: '/api/deleteUser/' + id
 			}).then(function(res) {
 				console.log(res.data);
 				callback();
@@ -228,7 +228,7 @@ app.factory('listService', function($http) {
 		getDetailReport: function(userId, callback) {
 			$http({
 				method: 'GET',
-				url: '/getDetailReport/' + userId
+				url: '/api/getDetailReport/' + userId
 			}).then(function(res) {
 				console.log("*************");
 				console.log(res.data);
@@ -239,7 +239,7 @@ app.factory('listService', function($http) {
 		getManager: function(userId, callback) {
 			$http({
 				method: 'GET',
-				url: '/getManager/' + userId
+				url: '/api/getManager/' + userId
 			}).then(function(res) {
 				callback(res.data);
 			});
@@ -329,7 +329,7 @@ app.directive('typeAhead', function($http) {
 				var val = element.val();
 				$http({
 					method: 'GET',
-					url: '/dirGet/' + val
+					url: '/api/dirGet/' + val
 				}).then(function(res) {
 					scope.docs = res.data;
 				});
